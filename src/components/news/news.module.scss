@@ -13,3 +13,9 @@
   margin: 10px 20px;
   width: 100%;
 }
+
+.TrafficWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
