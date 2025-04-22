@@ -3,6 +3,8 @@ import { IData_SnippetNews } from '../../common/interfaces/snippet-news';
 import styles from './news.module.scss';
 import Traffic from './traffic/traffic';
 import Reactions from './reactions/reactions';
+import Title from 'antd/es/typography/Title';
+import Info from '../info/info';
 
 interface Props {
   data: IData_SnippetNews;
@@ -15,8 +17,14 @@ const News: React.FC<Props> = ({ data }) => {
         <Traffic date={data.DP} reach={data.REACH} traffic={data.TRAFFIC} />
         <Reactions />
       </div>
-      <div>title</div>
-      <div>info</div>
+      {/* TODO: ADD LINK HERE */}
+      <Title level={3}>{data.TI}</Title>
+      <Info
+        dom={data.DOM}
+        country={data.CNTR}
+        lang={data.LANG}
+        authors={data.AU}
+      ></Info>
       <div>text</div>
       <div>tag buttons - "tag" in ant</div>
       <div>source btn (link)</div>
