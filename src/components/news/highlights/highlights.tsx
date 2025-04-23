@@ -1,6 +1,7 @@
 import Paragraph from 'antd/es/typography/Paragraph';
 import React from 'react';
 import { Typography } from 'antd';
+import { openTag, startOrEndSymbol } from './highlitgts.consts';
 
 const { Text } = Typography;
 
@@ -15,9 +16,6 @@ const Highlights: React.FC<Props> = ({ highlights }) => {
     const itemArr = str.split(' ');
     arr.push(...itemArr);
   });
-
-  const openTag = '<kw>';
-  const startOrEndSymbol = '…';
 
   return (
     <Paragraph>
