@@ -3,4 +3,10 @@ export const labels = {
     reach: 'Reach',
     traffic: 'Top Traffic:',
   },
+  SOURCE: {
+    buttonText: 'Original Source',
+  },
+  SHOW_MORE: {
+    buttonText: 'Show more',
+  },
 };

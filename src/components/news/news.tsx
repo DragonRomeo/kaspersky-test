@@ -10,6 +10,7 @@ import { CaretDownOutlined } from '@ant-design/icons';
 import Tags from './tags/tags';
 import Link from 'antd/es/typography/Link';
 import Highlights from './highlights/highlights';
+import { labels } from '../../common/consts/labels';
 
 interface Props {
   data: IData_SnippetNews;
@@ -33,7 +34,6 @@ const News: React.FC<Props> = ({ data }) => {
       <div>
         <Highlights highlights={data.HIGHLIGHTS} />
       </div>
-      {/*TODO: Move to label */}
       <div>
         <Button
           color='blue'
@@ -41,15 +41,13 @@ const News: React.FC<Props> = ({ data }) => {
           iconPosition='end'
           icon={<CaretDownOutlined />}
         >
-          Show more
+          {labels.SHOW_MORE.buttonText}
         </Button>
       </div>
-      {/* <div>tag buttons - "tag" in ant</div> */}
       <Tags tags={data.KW} />
-      {/* <div>source btn (link)</div> */}
       <Flex>
         <Button>
-          <Link href={data.URL}>Original Source</Link>
+          <Link href={data.URL}>{labels.SOURCE.buttonText}</Link>
         </Button>
       </Flex>
       <div>
