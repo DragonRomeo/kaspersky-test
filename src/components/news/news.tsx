@@ -11,6 +11,7 @@ import Tags from './tags/tags';
 import Link from 'antd/es/typography/Link';
 import Highlights from './highlights/highlights';
 import { labels } from '../../common/consts/labels';
+import DuplicatesCounter from '../duplicates-counter/duplicates-counter';
 
 interface Props {
   data: IData_SnippetNews;
@@ -52,7 +53,7 @@ const News: React.FC<Props> = ({ data }) => {
       </Flex>
       <div>
         {/* flex-row */}
-        <div>duplicates counter</div>
+        <DuplicatesCounter duplicates={data.KW}/>
         <div>sorting</div>
       </div>
       <div>Duplicate</div>

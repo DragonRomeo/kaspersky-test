@@ -9,4 +9,7 @@ export const labels = {
   SHOW_MORE: {
     buttonText: 'Show more',
   },
+  DUPLICATES: {
+    text: 'Dublicates:',
+  },
 };
