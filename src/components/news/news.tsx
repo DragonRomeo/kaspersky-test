@@ -4,7 +4,12 @@ import styles from './news.module.scss';
 import Traffic from './traffic/traffic';
 import Reactions from './reactions/reactions';
 import Title from 'antd/es/typography/Title';
-import Info from '../info/info';
+import Info from './info/info';
+import { Button, Flex } from 'antd';
+import { CaretDownOutlined } from '@ant-design/icons';
+import Tags from './tags/tags';
+import Link from 'antd/es/typography/Link';
+import Highlights from './highlights/highlights';
 
 interface Props {
   data: IData_SnippetNews;
@@ -25,9 +30,28 @@ const News: React.FC<Props> = ({ data }) => {
         lang={data.LANG}
         authors={data.AU}
       ></Info>
-      <div>text</div>
-      <div>tag buttons - "tag" in ant</div>
-      <div>source btn (link)</div>
+      <div>
+        <Highlights highlights={data.HIGHLIGHTS} />
+      </div>
+      {/*TODO: Move to label */}
+      <div>
+        <Button
+          color='blue'
+          variant='text'
+          iconPosition='end'
+          icon={<CaretDownOutlined />}
+        >
+          Show more
+        </Button>
+      </div>
+      {/* <div>tag buttons - "tag" in ant</div> */}
+      <Tags tags={data.KW} />
+      {/* <div>source btn (link)</div> */}
+      <Flex>
+        <Button>
+          <Link href={data.URL}>Original Source</Link>
+        </Button>
+      </Flex>
       <div>
         {/* flex-row */}
         <div>duplicates counter</div>
