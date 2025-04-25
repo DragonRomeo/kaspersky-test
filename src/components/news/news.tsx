@@ -17,47 +17,89 @@ interface Props {
   data: IData_SnippetNews;
 }
 
+const titleStyle: React.CSSProperties = {
+  color: 'inherit',
+};
+//TODO: move color to consts
+const srcBtnStyle: React.CSSProperties = {
+  borderColor: 'transparent',
+  boxShadow: 'none',
+  color: '#1668dc',
+  borderRadius: '10px',
+};
+
+const showMoreStyle: React.CSSProperties = {
+  padding: '2px',
+};
+
+const viewBtnStyle: React.CSSProperties = {
+  padding: '18px',
+  fontSize: '16px',
+};
+
+const relevanceBtnStyle: React.CSSProperties = {};
+
 const News: React.FC<Props> = ({ data }) => {
   return (
     <div className={styles.NewsContainer}>
-      <div className={styles.TrafficWrapper}>
-        <Traffic date={data.DP} reach={data.REACH} traffic={data.TRAFFIC} />
-        <Reactions />
-      </div>
-      {/* TODO: ADD LINK HERE */}
-      <Title level={3}>{data.TI}</Title>
-      <Info
-        dom={data.DOM}
-        country={data.CNTR}
-        lang={data.LANG}
-        authors={data.AU}
-      ></Info>
-      <div>
-        <Highlights highlights={data.HIGHLIGHTS} />
-      </div>
-      <div>
+      <Flex vertical>
+        <div className={styles.TrafficWrapper}>
+          <Traffic date={data.DP} reach={data.REACH} traffic={data.TRAFFIC} />
+          <Reactions />
+        </div>
+        <Link href={data.URL}>
+          <Title level={3} style={titleStyle}>
+            {data.TI}
+          </Title>
+        </Link>
+        <Info
+          dom={data.DOM}
+          country={data.CNTR}
+          lang={data.LANG}
+          authors={data.AU}
+        ></Info>
+      </Flex>
+      <Flex vertical>
+        <div>
+          <Highlights highlights={data.HIGHLIGHTS} />
+        </div>
+        <div>
+          <Button
+            color='blue'
+            variant='text'
+            iconPosition='end'
+            icon={<CaretDownOutlined />}
+            style={showMoreStyle}
+          >
+            {labels.SHOW_MORE.buttonText}
+          </Button>
+        </div>
+      </Flex>
+      <Tags tags={data.KW} />
+      <Flex>
+        <Button style={srcBtnStyle}>
+          <Link href={data.URL}>{labels.SOURCE.buttonText}</Link>
+        </Button>
+      </Flex>
+      <Flex justify='space-between' align='center'>
+        <DuplicatesCounter duplicates={data.KW} />
         <Button
           color='blue'
           variant='text'
           iconPosition='end'
           icon={<CaretDownOutlined />}
         >
-          {labels.SHOW_MORE.buttonText}
-        </Button>
-      </div>
-      <Tags tags={data.KW} />
-      <Flex>
-        <Button>
-          <Link href={data.URL}>{labels.SOURCE.buttonText}</Link>
+          By Relevance
         </Button>
       </Flex>
-      <div>
-        {/* flex-row */}
-        <DuplicatesCounter duplicates={data.KW}/>
-        <div>sorting</div>
-      </div>
       <div>Duplicate</div>
-      <div> View Duplicates btn</div>
+      <Button
+        variant='outlined'
+        style={viewBtnStyle}
+        icon={<CaretDownOutlined />}
+      >
+        View Duplicates
+      </Button>
     </div>
   );
 };
