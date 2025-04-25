@@ -11,33 +11,18 @@ import Tags from './tags/tags';
 import Link from 'antd/es/typography/Link';
 import Highlights from './highlights/highlights';
 import { labels } from '../../common/consts/labels';
-import DuplicatesCounter from '../duplicates-counter/duplicates-counter';
+
+import {
+  showMoreStyle,
+  srcBtnStyle,
+  titleStyle,
+  viewBtnStyle,
+} from './news.style';
+import DuplicatesCounter from './duplicates-counter/duplicates-counter';
 
 interface Props {
   data: IData_SnippetNews;
 }
-
-const titleStyle: React.CSSProperties = {
-  color: 'inherit',
-};
-//TODO: move color to consts
-const srcBtnStyle: React.CSSProperties = {
-  borderColor: 'transparent',
-  boxShadow: 'none',
-  color: '#1668dc',
-  borderRadius: '10px',
-};
-
-const showMoreStyle: React.CSSProperties = {
-  padding: '2px',
-};
-
-const viewBtnStyle: React.CSSProperties = {
-  padding: '18px',
-  fontSize: '16px',
-};
-
-const relevanceBtnStyle: React.CSSProperties = {};
 
 const News: React.FC<Props> = ({ data }) => {
   return (
@@ -89,7 +74,7 @@ const News: React.FC<Props> = ({ data }) => {
           iconPosition='end'
           icon={<CaretDownOutlined />}
         >
-          By Relevance
+          {labels.SORTING.text}
         </Button>
       </Flex>
       <div>Duplicate</div>
@@ -98,7 +83,7 @@ const News: React.FC<Props> = ({ data }) => {
         style={viewBtnStyle}
         icon={<CaretDownOutlined />}
       >
-        View Duplicates
+        {labels.VIEW_DUPLICATES.text}
       </Button>
     </div>
   );

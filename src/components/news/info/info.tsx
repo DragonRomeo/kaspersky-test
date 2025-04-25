@@ -7,7 +7,7 @@ import {
   GlobalOutlined,
   UserOutlined,
 } from '@ant-design/icons';
-import { authorEmpty, getAuthorsStr } from '../../info.helpers';
+import { authorEmpty, getAuthorsStr } from './info.helpers';
 import { capitalize } from '../../../common/helpers/global-helpers';
 
 interface Props {

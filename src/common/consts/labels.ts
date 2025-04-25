@@ -12,4 +12,15 @@ export const labels = {
   DUPLICATES: {
     text: 'Dublicates:',
   },
+  SORTING: {
+    text: 'By Relevance',
+  },
+  VIEW_DUPLICATES: {
+    text: 'View Duplicates',
+  },
+  REACTIONS: {
+    BUTTON: {
+      text: 'Positive',
+    },
+  },
 };

@@ -1,19 +1,18 @@
 import React from 'react';
-import { IData_TagItem } from '../../common/interfaces/snippet-news';
+
 import { Flex } from 'antd';
 import { Typography } from 'antd';
-import { labels } from '../../common/consts/labels';
+
 import { getTotalCount, notFoundMessage } from './duplicates.helper';
+import { containerStyles } from './duplicates.style';
+import { IData_TagItem } from '../../../common/interfaces/snippet-news';
+import { labels } from '../../../common/consts/labels';
 
 const { Text } = Typography;
 
 interface Props {
   duplicates: IData_TagItem[];
 }
-
-const containerStyles: React.CSSProperties = {
-  fontSize: '15px',
-};
 
 const DuplicatesCounter: React.FC<Props> = ({ duplicates }) => {
   const count = getTotalCount(duplicates);

@@ -3,6 +3,7 @@ import { Flex, Tag } from 'antd';
 import { TwitterOutlined } from '@ant-design/icons';
 import { IData_TagItem } from '../../../common/interfaces/snippet-news';
 import { Typography } from 'antd';
+import { tagStyle } from './tags.style';
 
 const { Text } = Typography;
 
@@ -10,14 +11,6 @@ const { Text } = Typography;
 interface Props {
   tags: Array<IData_TagItem>;
 }
-
-const tagStyle: React.CSSProperties = {
-  display: 'flex',
-  borderRadius: '20px',
-  padding: '5px 15px',
-  gap: '5px',
-  color: 'rgba(255, 255, 255, 0.45)',
-};
 
 const Tags: React.FC<Props> = ({ tags }) => {
   return (

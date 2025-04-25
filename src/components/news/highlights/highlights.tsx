@@ -2,6 +2,7 @@ import Paragraph from 'antd/es/typography/Paragraph';
 import React from 'react';
 import { Typography } from 'antd';
 import { openTag, startOrEndSymbol } from './highlights.consts';
+import { markStyle } from './highlights.style';
 
 const { Text } = Typography;
 
@@ -9,16 +10,9 @@ interface Props {
   highlights: string[];
 }
 
-const markStyle: React.CSSProperties = {
-  padding: '2px 6px',
-  color: 'white',
-  backgroundColor: '#1560BD',
-  borderRadius: '10px',
-};
-
 const Highlights: React.FC<Props> = ({ highlights }) => {
   const arr: string[] = [];
-// TODO: добавить "; в каждую строку перед тем как их склеивать"
+  // TODO: добавить "; в каждую строку перед тем как их склеивать"
   highlights.forEach((str) => {
     const itemArr = str.split(' ');
     arr.push(...itemArr);

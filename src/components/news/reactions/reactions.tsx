@@ -2,17 +2,13 @@ import React from 'react';
 import { BorderOutlined, InfoCircleOutlined } from '@ant-design/icons';
 import { Flex } from 'antd';
 import { Button } from 'antd';
-
-// const ButtonStyled = styled(Button)`
-//     background-color: red;
-// `;
+import { labels } from '../../../common/consts/labels';
 
 const Reactions = () => {
   return (
     <Flex gap='middle'>
-      {/* Move to labels */}
       <Button color='green' variant='solid'>
-        Positive
+        {labels.REACTIONS.BUTTON.text}
       </Button>
       <InfoCircleOutlined />
       <BorderOutlined />
