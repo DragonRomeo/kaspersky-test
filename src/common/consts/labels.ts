@@ -10,7 +10,7 @@ export const labels = {
     buttonText: 'Show more',
   },
   DUPLICATES: {
-    text: 'Dublicates:',
+    text: 'Duplicates:',
   },
   SORTING: {
     text: 'By Relevance',
