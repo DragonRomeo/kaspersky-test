@@ -1,4 +1,4 @@
-import { IData_TagItem } from '../../common/interfaces/snippet-news';
+import { IData_TagItem } from '../../../common/interfaces/snippet-news';
 
 export const getTotalCount = (duplicates: IData_TagItem[]): number | null => {
   if (duplicates.length === 0) {

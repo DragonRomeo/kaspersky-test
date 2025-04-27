@@ -7,9 +7,8 @@ import { tagStyle } from './tags.style';
 
 const { Text } = Typography;
 
-// TODO: заменить на IData_TagItem[], чтоб соответсвовать стилю проекта?
 interface Props {
-  tags: Array<IData_TagItem>;
+  tags: IData_TagItem[];
 }
 
 const Tags: React.FC<Props> = ({ tags }) => {

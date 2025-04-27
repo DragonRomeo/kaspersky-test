@@ -9,16 +9,25 @@ import {
 } from '@ant-design/icons';
 import { authorEmpty, getAuthorsStr } from './info.helpers';
 import { capitalize } from '../../../common/helpers/global-helpers';
+import { countryFlags } from './info.consts';
 
 interface Props {
   dom: string;
   country: string;
+  countryCode: string;
   lang?: string;
   authors: Array<string>;
 }
 
-const Info: React.FC<Props> = ({ dom, country, lang, authors }) => {
+const Info: React.FC<Props> = ({
+  dom,
+  country,
+  lang,
+  authors,
+  countryCode,
+}) => {
   const newAuthors = authors.length ? getAuthorsStr(authors) : authorEmpty;
+  const currentFlag = countryFlags[countryCode];
   return (
     <Flex gap='middle'>
       <Flex gap='small'>
@@ -27,12 +36,11 @@ const Info: React.FC<Props> = ({ dom, country, lang, authors }) => {
           {capitalize(dom)}
         </Link>
       </Flex>
-      {/* TODO: add mock icon for country */}
-      <InfoItem text={country}></InfoItem>
+      <InfoItem icon={currentFlag} text={country} />
       {lang && (
         <InfoItem icon={<FontColorsOutlined />} text={capitalize(lang)} />
       )}
-      <InfoItem icon={<UserOutlined />} text={newAuthors}></InfoItem>
+      <InfoItem icon={<UserOutlined />} text={newAuthors} />
     </Flex>
   );
 };

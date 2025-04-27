@@ -4,16 +4,14 @@ import { duplicatesContainerStyle } from './duplicates.style';
 import { Flex, Space } from 'antd';
 import TrafficItem from '../traffic/traffic-item/traffic-item';
 import { getDateArr, getThousandths } from '../traffic/traffic.helpers';
-import { labels } from '../../../common/consts/labels';
 import TitleLink from '../title-info/title-link/title-link';
 import Info from '../info/info';
 import Reactions from '../reactions/reactions';
+import { mockDuplicateURL } from './duplicates.consts';
 
 interface Props {
   data: IData_SnippetNews;
 }
-
-const mockDuplicateURL = 'weStoleYourNews.com';
 
 const Duplicates: React.FC<Props> = ({ data }) => {
   const date = data.DP;
@@ -36,10 +34,15 @@ const Duplicates: React.FC<Props> = ({ data }) => {
             />
           </Space>
         </Flex>
-        <Reactions isBtn={false} />
+        <Reactions sentiment={data.SENT} isBtn={false} />
       </Flex>
       <TitleLink url={data.URL}>{data.TI}</TitleLink>
-      <Info dom={mockDuplicateURL} country={data.CNTR} authors={data.AU}></Info>
+      <Info
+        countryCode={data.CNTR_CODE}
+        dom={mockDuplicateURL}
+        country={data.CNTR}
+        authors={data.AU}
+      ></Info>
     </div>
   );
 };

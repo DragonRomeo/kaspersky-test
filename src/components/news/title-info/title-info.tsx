@@ -22,6 +22,7 @@ const TitleInfo: React.FC<Props> = ({ data }) => {
       <Info
         dom={data.DOM}
         country={data.CNTR}
+        countryCode={data.CNTR_CODE}
         lang={data.LANG}
         authors={data.AU}
       ></Info>

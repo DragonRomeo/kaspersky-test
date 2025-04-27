@@ -1,6 +1,6 @@
 import './App.css';
 import NewsContainer from './components/news/news-container';
-import { Button, ConfigProvider, Input, Space, theme } from 'antd';
+import { ConfigProvider, theme } from 'antd';
 
 function App() {
   return (

@@ -1,13 +1,17 @@
 import React from 'react';
 import { IData_SnippetNews } from '../../common/interfaces/snippet-news';
-import styles from './news.module.scss';
 import { Button, Flex } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 import Tags from './tags/tags';
 import Link from 'antd/es/typography/Link';
 import Highlights from './highlights/highlights';
 import { labels } from '../../common/consts/labels';
-import { showMoreStyle, srcBtnStyle, viewBtnStyle } from './news.style';
+import {
+  newsContainer,
+  showMoreStyle,
+  srcBtnStyle,
+  viewBtnStyle,
+} from './news.style';
 import DuplicatesCounter from './duplicates-counter/duplicates-counter';
 import Duplicates from './duplicates/duplicates';
 import TitleInfo from './title-info/title-info';
@@ -18,10 +22,8 @@ interface Props {
 
 const News: React.FC<Props> = ({ data }) => {
   return (
-    // TODO: заменить scss на ts
-    <div className={styles.NewsContainer}>
+    <div style={newsContainer}>
       <TitleInfo data={data} />
-      {/* TODO: вынести в хайлайт контейнер? */}
       <Flex vertical>
         <div>
           <Highlights highlights={data.HIGHLIGHTS} />
