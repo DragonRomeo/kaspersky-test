@@ -19,6 +19,7 @@ import {
   viewBtnStyle,
 } from './news.style';
 import DuplicatesCounter from './duplicates-counter/duplicates-counter';
+import Duplicates from './duplicates/duplicates';
 
 interface Props {
   data: IData_SnippetNews;
@@ -77,7 +78,8 @@ const News: React.FC<Props> = ({ data }) => {
           {labels.SORTING.text}
         </Button>
       </Flex>
-      <div>Duplicate</div>
+      {/* <div>Duplicate</div> */}
+      <Duplicates data={data} />
       <Button
         variant='outlined'
         style={viewBtnStyle}
