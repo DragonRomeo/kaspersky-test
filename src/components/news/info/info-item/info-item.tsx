@@ -13,7 +13,7 @@ const InfoItem: React.FC<Props> = ({ icon, text }) => {
   return (
     <Flex gap='small'>
       {icon}
-      <Text>{text}</Text>
+      <Text type='secondary'>{text}</Text>
     </Flex>
   );
 };

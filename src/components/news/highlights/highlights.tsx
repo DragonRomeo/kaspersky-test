@@ -2,7 +2,7 @@ import Paragraph from 'antd/es/typography/Paragraph';
 import React from 'react';
 import { Typography } from 'antd';
 import { openTag, startOrEndSymbol } from './highlights.consts';
-import { markStyle } from './highlights.style';
+import { markStyle, paragraphStyle } from './highlights.style';
 
 const { Text } = Typography;
 
@@ -12,14 +12,13 @@ interface Props {
 
 const Highlights: React.FC<Props> = ({ highlights }) => {
   const arr: string[] = [];
-  // TODO: добавить "; в каждую строку перед тем как их склеивать"
   highlights.forEach((str) => {
     const itemArr = str.split(' ');
     arr.push(...itemArr);
   });
 
   return (
-    <Paragraph>
+    <Paragraph style={paragraphStyle}>
       {arr.map((word, index) => {
         if (word.slice(0, 4) !== openTag) {
           return `${word} `;

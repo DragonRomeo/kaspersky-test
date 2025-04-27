@@ -16,7 +16,7 @@ const TitleInfo: React.FC<Props> = ({ data }) => {
     <Flex vertical>
       <div style={trafficWrapper}>
         <Traffic date={data.DP} reach={data.REACH} traffic={data.TRAFFIC} />
-        <Reactions />
+        <Reactions sentiment={data.SENT} />
       </div>
       <TitleLink url={data.URL}>{data.TI}</TitleLink>
       <Info
