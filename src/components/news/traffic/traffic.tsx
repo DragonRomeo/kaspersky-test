@@ -4,6 +4,7 @@ import { IData_TrafficItem } from '../../../common/interfaces/snippet-news';
 import { Typography, Space } from 'antd';
 import { getDateArr, getPercent, getThousandths } from './traffic.helpers';
 import { labels } from '../../../common/consts/labels';
+import TrafficItem from './traffic-item/traffic-item';
 
 const { Text } = Typography;
 
@@ -17,23 +18,25 @@ const Traffic: React.FC<Props> = ({ date, reach, traffic }) => {
 
   return (
     <Space direction='horizontal' size='large'>
-      <Flex gap='small'>
-        <Text>{dateArr[1]}</Text>
-        <Text type='secondary'>{`${dateArr[0]} ${dateArr[2]}`}</Text>
-      </Flex>
-      <Flex gap='small'>
-        <Text>{getThousandths(reach)}</Text>
-
-        <Text type='secondary'>{labels.TRAFFIC.reach}</Text>
-      </Flex>
+      <TrafficItem
+        firstValue={dateArr[1]}
+        secondValue={`${dateArr[0]} ${dateArr[2]}`}
+      />
+      <TrafficItem
+        firstValue={getThousandths(reach)}
+        secondValue={labels.TRAFFIC.reach}
+      />
       <Flex gap='small'>
         <Text type='secondary'>{labels.TRAFFIC.traffic}</Text>
         <Flex gap='small'>
           {traffic.map((country) => (
-            <Flex key={country.value} gap='2px'>
-              <Text type='secondary'>{country.value}</Text>
-              <Text>{getPercent(country.count)}</Text>
-            </Flex>
+            <TrafficItem
+              key={country.value}
+              firstValue={country.value}
+              isHighlightFirst={false}
+              secondValue={getPercent(country.count)}
+              isHighlightSecond={true}
+            />
           ))}
         </Flex>
       </Flex>

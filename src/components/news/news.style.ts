@@ -1,11 +1,9 @@
-export const titleStyle: React.CSSProperties = {
-  color: 'inherit',
-};
-//TODO: move color to consts
+import { mainBlueColor } from '../../common/style/consts';
+
 export const srcBtnStyle: React.CSSProperties = {
   borderColor: 'transparent',
   boxShadow: 'none',
-  color: '#1668dc',
+  color: mainBlueColor,
   borderRadius: '10px',
 };
 

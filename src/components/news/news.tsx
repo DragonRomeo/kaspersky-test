@@ -1,25 +1,16 @@
 import React from 'react';
 import { IData_SnippetNews } from '../../common/interfaces/snippet-news';
 import styles from './news.module.scss';
-import Traffic from './traffic/traffic';
-import Reactions from './reactions/reactions';
-import Title from 'antd/es/typography/Title';
-import Info from './info/info';
 import { Button, Flex } from 'antd';
 import { CaretDownOutlined } from '@ant-design/icons';
 import Tags from './tags/tags';
 import Link from 'antd/es/typography/Link';
 import Highlights from './highlights/highlights';
 import { labels } from '../../common/consts/labels';
-
-import {
-  showMoreStyle,
-  srcBtnStyle,
-  titleStyle,
-  viewBtnStyle,
-} from './news.style';
+import { showMoreStyle, srcBtnStyle, viewBtnStyle } from './news.style';
 import DuplicatesCounter from './duplicates-counter/duplicates-counter';
 import Duplicates from './duplicates/duplicates';
+import TitleInfo from './title-info/title-info';
 
 interface Props {
   data: IData_SnippetNews;
@@ -27,24 +18,10 @@ interface Props {
 
 const News: React.FC<Props> = ({ data }) => {
   return (
+    // TODO: заменить scss на ts
     <div className={styles.NewsContainer}>
-      <Flex vertical>
-        <div className={styles.TrafficWrapper}>
-          <Traffic date={data.DP} reach={data.REACH} traffic={data.TRAFFIC} />
-          <Reactions />
-        </div>
-        <Link href={data.URL}>
-          <Title level={3} style={titleStyle}>
-            {data.TI}
-          </Title>
-        </Link>
-        <Info
-          dom={data.DOM}
-          country={data.CNTR}
-          lang={data.LANG}
-          authors={data.AU}
-        ></Info>
-      </Flex>
+      <TitleInfo data={data} />
+      {/* TODO: вынести в хайлайт контейнер? */}
       <Flex vertical>
         <div>
           <Highlights highlights={data.HIGHLIGHTS} />
@@ -78,7 +55,6 @@ const News: React.FC<Props> = ({ data }) => {
           {labels.SORTING.text}
         </Button>
       </Flex>
-      {/* <div>Duplicate</div> */}
       <Duplicates data={data} />
       <Button
         variant='outlined'
