@@ -27,7 +27,7 @@ const Info: React.FC<Props> = ({ dom, country, lang, authors }) => {
           {capitalize(dom)}
         </Link>
       </Flex>
-      {/* TODO: add icon for country */}
+      {/* TODO: add mock icon for country */}
       <InfoItem text={country}></InfoItem>
       {lang && (
         <InfoItem icon={<FontColorsOutlined />} text={capitalize(lang)} />
