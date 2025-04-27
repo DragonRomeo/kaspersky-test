@@ -1,12 +1,11 @@
 import { Flex } from 'antd';
 import React from 'react';
 import { IData_SnippetNews } from '../../../common/interfaces/snippet-news';
-import { titleStyle, trafficWrapper } from './title-info.style';
+import { trafficWrapper } from './title-info.style';
 import Traffic from '../traffic/traffic';
 import Reactions from '../reactions/reactions';
-import Link from 'antd/es/typography/Link';
-import Title from 'antd/es/typography/Title';
 import Info from '../info/info';
+import TitleLink from './title-link/title-link';
 
 interface Props {
   data: IData_SnippetNews;
@@ -19,11 +18,7 @@ const TitleInfo: React.FC<Props> = ({ data }) => {
         <Traffic date={data.DP} reach={data.REACH} traffic={data.TRAFFIC} />
         <Reactions />
       </div>
-      <Link href={data.URL}>
-        <Title level={3} style={titleStyle}>
-          {data.TI}
-        </Title>
-      </Link>
+      <TitleLink url={data.URL}>{data.TI}</TitleLink>
       <Info
         dom={data.DOM}
         country={data.CNTR}

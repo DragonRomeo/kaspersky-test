@@ -13,7 +13,7 @@ import { capitalize } from '../../../common/helpers/global-helpers';
 interface Props {
   dom: string;
   country: string;
-  lang: string;
+  lang?: string;
   authors: Array<string>;
 }
 
@@ -29,10 +29,9 @@ const Info: React.FC<Props> = ({ dom, country, lang, authors }) => {
       </Flex>
       {/* TODO: add icon for country */}
       <InfoItem text={country}></InfoItem>
-      <InfoItem
-        icon={<FontColorsOutlined />}
-        text={capitalize(lang)}
-      ></InfoItem>
+      {lang && (
+        <InfoItem icon={<FontColorsOutlined />} text={capitalize(lang)} />
+      )}
       <InfoItem icon={<UserOutlined />} text={newAuthors}></InfoItem>
     </Flex>
   );

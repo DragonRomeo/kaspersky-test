@@ -3,7 +3,3 @@ export const trafficWrapper: React.CSSProperties = {
   flexDirection: 'row',
   justifyContent: 'space-between',
 };
-
-export const titleStyle: React.CSSProperties = {
-  color: 'inherit',
-};
