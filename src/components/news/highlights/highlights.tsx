@@ -1,8 +1,9 @@
 import Paragraph from 'antd/es/typography/Paragraph';
 import React from 'react';
 import { Typography } from 'antd';
-import { openTag, startOrEndSymbol } from './highlights.consts';
+import { openTag, separateSymbol } from './highlights.consts';
 import { markStyle, paragraphStyle } from './highlights.style';
+import { processingSentences } from './highlights.helpers';
 
 const { Text } = Typography;
 
@@ -11,32 +12,39 @@ interface Props {
 }
 
 const Highlights: React.FC<Props> = ({ highlights }) => {
-  const arr: string[] = [];
-  highlights.forEach((str) => {
+  const newHighlights = processingSentences(highlights);
+  const words: string[] = [];
+
+  newHighlights.forEach((str) => {
     const itemArr = str.split(' ');
-    arr.push(...itemArr);
+    words.push(...itemArr);
   });
 
   return (
     <Paragraph style={paragraphStyle}>
-      {arr.map((word, index) => {
-        if (word.slice(0, 4) !== openTag) {
-          return `${word} `;
-        }
-        let start = 4;
-        let end = -5;
-        if (index === 0 && word.slice(0, 1) === startOrEndSymbol) {
-          start += 1;
-        }
-        if (word.slice(-1) === startOrEndSymbol) {
-          end -= 1;
-        }
+      {words.map((word) => {
+        if (word.slice(0, 4) == openTag) {
+          const indexOf = word.indexOf(separateSymbol);
+          let firstHalf = '';
+          let secondHalf = ' ';
 
-        return (
-          <>
-            <Text style={markStyle}>{word.slice(start, end)}</Text>{' '}
-          </>
-        );
+          if (indexOf != -1) {
+            firstHalf = word.slice(0, indexOf);
+            secondHalf = word.slice(indexOf) + ' ';
+          } else {
+            firstHalf = word;
+          }
+
+          return (
+            <>
+              <Text style={markStyle}>
+                {firstHalf.replace('<kw>', '').replace('</kw>', '')}
+              </Text>
+              {secondHalf}
+            </>
+          );
+        }
+        return `${word} `;
       })}
     </Paragraph>
   );
