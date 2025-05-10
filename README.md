@@ -11,4 +11,5 @@ p.s.
 Я не знал изначальный дедлайн до пятницы, потому спешил и не разбил на таски - коммиты получились очень грязные
 
 ## Превью - скриншот
-![image](https://github.com/user-attachments/assets/b36edf13-d9c3-43cf-9d94-63f244beecd4)
+![image](https://github.com/user-attachments/assets/71ca6477-e591-413c-bf87-5670701c670d)
+
